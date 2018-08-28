@@ -2,12 +2,17 @@ package com.demo.employee.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.demo.employee.dao.EmployeeDAOImpl;
 import com.demo.employee.pojo.Employee;
 
+@Service
 public class EmployeeService {
 	
-	EmployeeDAOImpl dao = new EmployeeDAOImpl();
+	@Autowired
+	EmployeeDAOImpl dao; //= new EmployeeDAOImpl();
 	
 	public List<Employee> getAllEmployee() {
 	

@@ -29,6 +29,10 @@ public class EmployeeApplication
     		service.addEmployee(new Employee(2, "Tom", "Riddle"));
     		service.addEmployee(new Employee(3, "Sam", "Smith"));
     		service.addEmployee(new Employee(4, "Harper", "White"));
+    		service.addEmployee(new Employee(5, "Tony", "Stark"));
+    		service.addEmployee(new Employee(6, "Tom", "Riddle"));
+    		service.addEmployee(new Employee(7, "Sam", "Smith"));
+    		service.addEmployee(new Employee(8, "Harper", "White"));
     		System.out.println("Sample Data Populated to Database");
     	};
     }

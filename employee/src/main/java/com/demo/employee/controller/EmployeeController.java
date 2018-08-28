@@ -3,6 +3,7 @@ package com.demo.employee.controller;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +19,9 @@ import com.demo.employee.service.EmployeeService;
 public class EmployeeController {
 	
 	@Autowired
-	private EmployeeService employeeService;
+	EmployeeService employeeService;
 	
-	@RequestMapping("/employee/{start}/{count}")
+	@RequestMapping("/employees/{start}/{count}")
 	public Resources getEmployeeByPage(@PathVariable("start") int start,
 			@PathVariable("count") int count) 
 	{
@@ -41,17 +42,26 @@ public class EmployeeController {
 		
 	}
 	
+	@RequestMapping("/employees/{id}")
+	public Resource getEmployeeById(@PathVariable() int id) {
+		
+		Link nxtLink = linkTo(methodOn(this.getClass()).getAllEmployee()).withRel("View All");
+		
+		Resource resource = new Resource(employeeService.getEmployee(id), nxtLink);
+		return resource;
+	}
+	
 	@RequestMapping("/employees")
 	public List<Employee> getAllEmployee()
 	{
 		return employeeService.getAllEmployee();
 	}
 	
-	@RequestMapping("/employees/{id}")
+	/*@RequestMapping("/employees/{id}")
 	public Employee getEmployee(@PathVariable int id)
 	{
 		return employeeService.getEmployee(id);
-	}
+	}*/
 	
 	@RequestMapping(method=RequestMethod.POST, value="/employees")
 	public void addEmployee(@RequestBody Employee employee) 

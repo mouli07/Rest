@@ -1,12 +1,15 @@
 package com.demo.employee.dao;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.demo.employee.pojo.Employee;
 
-
+@Repository
 public class EmployeeDAOImpl implements EmployeeDAO{
 
-	private List<Employee> employees;
+	private List<Employee> employees=new ArrayList<>();
 	
 	@Override
 	public List<Employee> getAllEmployee() {
